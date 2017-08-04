@@ -49,4 +49,9 @@ public class DocumentDAOImpl implements DocumentDAO {
 
         return result;
     }
+
+    @Override
+    public void save(Document document) {
+        DOCS.add(document);
+    }
 }

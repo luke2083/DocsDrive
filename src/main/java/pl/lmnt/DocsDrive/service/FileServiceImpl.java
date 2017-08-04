@@ -66,6 +66,11 @@ public class FileServiceImpl implements FileService {
 
     }
 
+    @Override
+    public Path getFilePath(String fileName) {
+        return uploadDir.resolve(fileName);
+    }
+
     private void initFileSystem() throws IOException {
 
         if (!Files.exists(uploadDir))

@@ -26,4 +26,9 @@ public class ServiceEngineImpl implements SearchEngine {
     public List<Document> findByType(Type type) {
         return documentDAOImpl.findByType(type);
     }
+
+    @Override
+    public void save(Document document) {
+        documentDAOImpl.save(document);
+    }
 }

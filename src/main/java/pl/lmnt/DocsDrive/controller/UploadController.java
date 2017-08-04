@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.lmnt.DocsDrive.model.Document;
 import pl.lmnt.DocsDrive.model.Type;
 import pl.lmnt.DocsDrive.service.FileService;
+import pl.lmnt.DocsDrive.service.SearchEngine;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,8 +26,10 @@ import java.time.LocalDateTime;
 public class UploadController {
 
     @Autowired
-    FileService fileServiceImpl;
+    private FileService fileServiceImpl;
 
+    @Autowired
+    private SearchEngine searchEngineImpl;
 
     @GetMapping("/upload")
     public ModelAndView renderFileUpload() {
@@ -44,6 +47,7 @@ public class UploadController {
             doc.setLocation(uploadedFile);
             doc.setCreated(LocalDateTime.now());
             doc.setModified(LocalDateTime.now());
+            searchEngineImpl.save(doc);
             return new ModelAndView("redirect:/");
         } catch (IOException e) {
             e.printStackTrace();

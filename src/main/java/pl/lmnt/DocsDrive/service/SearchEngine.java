@@ -11,7 +11,7 @@ import java.util.List;
 public interface SearchEngine {
 
     List<Document> findAll();
-
     List<Document> findByType(Type type);
+    void save(Document document);
 
 }
