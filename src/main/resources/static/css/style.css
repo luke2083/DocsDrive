@@ -1,0 +1,11 @@
+body {
+    padding-top: 70px;
+    background: #c8ccce;
+}
+
+.navbar {
+    background: #2a83b2;
+}
+.navbar .container-fluid .navbar-header button {
+    color: #c8ccce;
+}

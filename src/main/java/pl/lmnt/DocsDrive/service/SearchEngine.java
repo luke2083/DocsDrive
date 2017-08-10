@@ -13,5 +13,7 @@ public interface SearchEngine {
     List<Document> findAll();
     List<Document> findByType(Type type);
     void save(Document document);
+    List<Type> findAllTypes();
+    Type findTypeByName(String name);
 
 }

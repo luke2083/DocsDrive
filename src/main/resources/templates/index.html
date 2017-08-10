@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
@@ -10,28 +12,30 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
 
     <div class="container">
-        <div class="jumbotron">
-            <h2><span class="glyphicon glyphicon-level-up"></span> DocsDrive</h2>
-        </div>
+
         <div th:replace="temp/navbarTemplate"></div>
         <div class="col-lg-12">
             <table class="table">
                 <head>
                     <tr>
                         <th>Nazwa</th>
-                        <!-- <th>Typ</th> -->
+                        <th>Typ</th>
+                        <th>Opis Typu</th>
                         <th>Utworzony</th>
                         <th>Ścieżka</th>
                     </tr>
                 </head>
                 <tr th:each = "doc : ${list}" >
                     <td><p th:text = "${doc.name}"></p></td>
-                    <!-- <td><p th:text = "${doc.type.name}"></p></td> -->
+                    <td><p th:text = "${doc.type.name}"></p></td>
+                    <td><p th:text = "${doc.type.desc}"></p></td>
                     <td><p th:text = "${doc.created}"></p></td>
                     <td><a th:href="@{/download/{filename}(filename=${doc.location})}"><p th:text = "${doc.location}"></p></a></td>
                 </tr>

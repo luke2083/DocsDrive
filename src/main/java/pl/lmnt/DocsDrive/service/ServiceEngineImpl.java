@@ -31,4 +31,14 @@ public class ServiceEngineImpl implements SearchEngine {
     public void save(Document document) {
         documentDAOImpl.save(document);
     }
+
+    @Override
+    public List<Type> findAllTypes() {
+        return documentDAOImpl.findAllType();
+    }
+
+    @Override
+    public Type findTypeByName(String name) {
+        return documentDAOImpl.findTypeByName(name);
+    }
 }

@@ -14,5 +14,7 @@ public interface DocumentDAO {
     List<Document> findAll();
     List<Document> findByType(Type type);
     void save(Document document);
+    List<Type> findAllType();
+    Type findTypeByName(String name);
 
 }

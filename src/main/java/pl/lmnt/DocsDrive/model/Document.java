@@ -63,4 +63,15 @@ public class Document {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    @Override
+    public String toString() {
+        return "Document{" +
+                "name='" + name + '\'' +
+                ", type=" + type +
+                ", created=" + created +
+                ", modified=" + modified +
+                ", location='" + location + '\'' +
+                '}';
+    }
 }

@@ -36,17 +36,19 @@ public class UploadController {
         ModelAndView view = new ModelAndView("upload");
         view.addObject("doc", new Document());
         view.addObject("type", new Type());
+        view.addObject("types", searchEngineImpl.findAllTypes());
         return view;
     }
 
     @PostMapping("/upload")
-    public ModelAndView uploadFile(@RequestParam("file") MultipartFile file, Document doc) {
+    public ModelAndView uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("type") Type type, Document doc) {
 
         try {
             String uploadedFile = fileServiceImpl.store(file);
             doc.setLocation(uploadedFile);
             doc.setCreated(LocalDateTime.now());
             doc.setModified(LocalDateTime.now());
+            doc.setType(type);
             searchEngineImpl.save(doc);
             return new ModelAndView("redirect:/");
         } catch (IOException e) {
